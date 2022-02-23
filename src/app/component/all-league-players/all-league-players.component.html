@@ -1,0 +1,44 @@
+<!-- Heading -->
+<div class="league-heading">
+  <h3>All League Players</h3>
+
+  <!-- Sort -->
+  <form class="league-heading__form">
+    <fieldset class="league-heading__form--sort">
+      <label for="sortBy">Sort By</label>
+      <select [(ngModel)]="sortBy" (change)="onSort($event)" name="sortBy" id="sortBy">
+        <option value="" disabled>Select</option>
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+      </select>
+    </fieldset>
+
+    <fieldset class="league-heading__form--per-page">
+      <label for="perPage">Per Page</label>
+      <select [(ngModel)]="perPage" (change)="onPerPage()" name="perPage" id="perPage">
+        <option value="10">10</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+      </select>
+    </fieldset>
+  </form>
+</div>
+
+<app-table [resultsByPage]="resultsByPage" [colHeadings]="['First Name', 'Last Name', 'Position', 'Height', 'Weight']"></app-table>
+
+<!-- Pagination -->
+<div class="pagination">
+  <div *ngIf="leaguePlayers" class="pagination__icons">
+    <button [disabled]="page === 1" class="pagination__icons--btn btn" (click)="prevPage()">
+      <span class="sr-only">Go to previous page</span>
+      <fa-icon class="left-arrow" [icon]="leftArrow" ></fa-icon>
+    </button>
+    <p>Page {{page}} of {{totalPages}}</p>
+    <button [disabled]="page === totalPages"class="pagination__icons--btn btn" (click)="nextPage()">
+      <span class="sr-only">Go to next page</span>
+      <fa-icon class="right-arrow" [icon]="rightArrow" ></fa-icon>
+    </button>
+  </div>
+</div>

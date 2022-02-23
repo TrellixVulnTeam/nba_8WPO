@@ -1,0 +1,291 @@
+/* Global Styles */
+:root {
+  --color-grey-dark: #343434;
+  --color-grey-med: #757575;
+  --color-grey-light: #dfdfdf;
+
+  --color-blue-brand: #17408B;
+  --color-blue-light: #1976d2;
+
+  --color-white-brand: #ffffff;
+  --color-white-off: #f7f7f7;
+
+  --color-red-brand: #C9082A;
+
+  --font-primary: 'Roboto', Arial, sans-serif;
+
+  /* Minimum font-size 18px for accessibility */
+  /* Set base size to 20px or 125% */
+  /* Media queries allowed to use 119% (19px) an 112% (18px) */
+
+  /* Type Scale (Major Third)*/
+  /* 61.04px */
+  --fs-xxl: 3.052rem; 
+  /* 48.83px */
+  --fs-xl: 2.441rem;
+  /* 39.06px */
+  --fs-lrg: 1.953rem;
+  /* 31.25px */
+  --fs-med: 1.563rem;
+  /* 25px */
+  --fs-sml: 1..25rem;
+  /* 20px */
+  --fs-xs: 1rem;
+
+  /* Major Third on Spacing */
+  --space-xxl: 3.052rem;
+  --space-xl: 2.441rem;
+  --space-lrg: 1.953rem;
+  --space-med: 1.563rem;
+  --space-sml: 1.25rem;
+  --space-xs: 1rem;
+  --space-xxs: .5rem;
+
+  /* Box shadows */
+  --bs-primary:rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
+  --bs-secondary: rgba(117, 117, 117, 0.3) 0px 2px 2px 0px;
+
+  /* Border Radiuses */
+  --br-lrg: 7px;
+  --br-med: 5px;
+  --br-sml: 3px;
+}
+
+* {
+  font-family: var(--font-primary);
+  color: var(--color-grey-dark-dark);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 125%;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  height: 100%;
+  max-width: 1440px;
+  background-color:var(--color-white-off);
+}
+
+
+router-outlet + *  {
+  padding: 0 var(--space-xs);
+}
+
+/* Text */
+
+h1 {
+  font-size: var(--fs-med);
+}
+
+h2 {
+  font-size: var(--fs-med);
+  text-transform: uppercase;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-weight: lighter;
+}
+
+p {
+  font-size: var(--fs-xs);
+}
+
+/* Hyperlink */
+
+a {
+  cursor: pointer;
+  color: var(--color-blue-brand);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+a:hover {
+  border-bottom: 2px solid var(--color-blue-brand);
+}
+
+/* Input */
+label {
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  text-transform: uppercase;
+}
+
+input {
+  font-size: var(--fs-xs);
+  border-radius: var(--br-sml);
+  padding: var(--space-xxs);
+  margin-bottom: var(--space-xs);
+  border: 1px solid var(--color-grey-med);
+}
+
+select {
+  width: 6rem;
+  height: 1.2rem;
+  border: 1px solid var(--color-blue-brand);
+  border-radius: var(--br-sml);
+}
+
+select:focus {
+  border: 2px solid var(--color-blue-light);
+}
+
+fieldset {
+  padding: 0;
+  border: none;
+}
+
+/* Button */
+.btn {
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-blue-brand);
+}
+
+.btn:hover {
+  filter: brightness(1.15);
+  box-shadow: var(--bs-primary);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: none;
+}
+
+/* Fancy Button */
+
+.fancy-btn {
+  background-color: var(--color-white-brand);
+  color: var(--color-blue-light);
+}
+
+.fancy-btn i.material-icons {
+  color: var(--color-blue-light);
+  padding-right: 4px;
+}
+
+/* Top Bar */
+
+app-top-bar {
+  width: 100vw;
+  height: 13vh;
+  background: radial-gradient(circle farthest-side, var(--color-grey-light), var(--color-grey-med), var(--color-grey-dark));
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-xs);
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: var(--bs-secondary);
+  z-index: 1;
+}
+
+app-top-bar h1 {
+  color: var(--color-white-brand);
+  margin: 0 var(--space-xs);
+  width: 100%;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  min-height: 87vh;
+  max-height: min-content;
+}
+
+app-team-list,
+app-team-details,
+app-all-league-players {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  letter-spacing: 1px;
+  margin: var(--space-xs) 0 0 0;
+}
+
+
+th {
+  text-align: left;
+  border-bottom: 2px solid var(--color-red-brand);
+  font-size: var(--fs-med);
+  font-weight: lighter;
+}
+
+tbody {
+  width: 100%;
+}
+
+.container tr:nth-of-type(2n) {
+  background-color: var(--color-grey-light);
+}
+
+tr {
+  height: 1.6rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}   
+ 
+
+@media only screen and (max-width: 64em) {
+
+  h2, h3 {
+    font-size: var(--fs-sml);
+  }
+
+  html {
+    font-size: 119%;
+  }
+
+  th {
+    font-weight: bold;
+    font-size: var(--fs-sml);
+  }
+
+  select {
+    width: 4rem;
+    margin-left: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 48em) {
+  html {
+    font-size: 112%;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="team-list-heading">
+  <h2>NBA Teams</h2>
+  <a routerLink="league">All League Players</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Team Name</th>
+            <th>City</th>
+            <th>Division</th>
+        </tr>
+    </thead>
+    <tbody>
+      <p>{{!teams ? 'Loading...' : ''}}</p>
+      <!--  Loop over all teams and show link to team detail page as well as team city & division -->
+        <tr *ngFor="let team of teams">
+          <td><a routerLink="/details/{{team.id}}">{{team.name}}</a></td>
+          <td>{{ team.city }}</td>
+          <td>{{ team.division }}</td>
+        </tr>
+    </tbody>
+</table>

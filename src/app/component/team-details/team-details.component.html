@@ -1,0 +1,74 @@
+<!-- If still fetching team data render loading message otherwise show team details -->
+
+<!-- Card -->
+<app-card></app-card>
+
+<!-- Heading -->
+<div class="players-heading">
+  <h3>{{ showAllPlayers ? "All-Time Players" : "Current Players" }}</h3>
+  
+  <!-- Sort -->
+  <!-- Could probably componentize out as a generic sort and pass in sort options -->
+  <form class="players-heading__form">
+    <button type="button" class="players-heading__form--btn btn btn-primary" (click)="onToggleAllPlayers()">
+      {{ !showAllPlayers ? "All-Time Players" : "Current Players" }}
+    </button>
+    <fieldset class="players-heading__form--sort">
+      <label for="sortBy">Sort By</label>
+      <select
+        [(ngModel)]="sortBy"
+        (change)="onSort($event)"
+        name="sortBy"
+        id="sortBy"
+      >
+        <option value="" disabled>Select</option>
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+      </select>
+    </fieldset>
+  </form>
+</div>
+
+<!-- Players -->
+
+<!-- Componentize out with own http request because were making 2 requests anyways 1 for team 1 for players -->
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Position</th>
+      <th>Height (")</th>
+      <th>Weight (lb)</th>
+    </tr>
+  </thead>
+
+  <!-- Show all current team players initially otherwise if toggle button is clicked show all players ever for that team -->
+  <p>{{!allTeamPlayers ? 'Loading...' : ''}}</p>
+  <tbody
+    *ngIf="!showAllPlayers; then currentPlayers; else showTeamPlayers"
+  >
+</tbody>
+
+  <!-- Current Players -->
+  <ng-template #currentPlayers>
+    <tr *ngFor="let player of currentTeamPlayers">
+      <td>{{ player.firstName }}</td>
+      <td>{{ player.lastName }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.heightInches }}</td>
+      <td>{{ player.weightPounds }}</td>
+    </tr>
+  </ng-template>
+
+  <!-- All time players -->
+  <ng-template #showTeamPlayers>
+    <tr *ngFor="let player of allTeamPlayers">
+      <td>{{ player.firstName }}</td>
+      <td>{{ player.lastName }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.heightInches }}</td>
+      <td>{{ player.weightPounds }}</td>
+    </tr>
+  </ng-template>
+</table>

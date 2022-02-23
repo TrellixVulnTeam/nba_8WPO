@@ -1,0 +1,21 @@
+<!-- Players -->
+<table>
+  <thead>
+      <tr>
+        <th *ngFor="let heading of colHeadings">{{ heading }}</th>
+      </tr>
+  </thead>
+  
+  <!-- Render players by amount per page -->
+  <tbody >
+    <p>{{!resultsByPage ? 'Loading...' : ''}}</p>
+    <tr *ngFor="let player of resultsByPage">
+      <td>{{ player.firstName }}</td>
+      <td>{{ player.lastName }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.heightInches }}</td>
+      <td>{{ player.weightPounds }}</td>
+    </tr>
+  </tbody>
+  
+</table>

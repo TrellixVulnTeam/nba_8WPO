@@ -1,0 +1,113 @@
+/* Card */
+
+.card {
+  perspective: 150rem;
+  position: relative;
+  height: 20rem;
+  width: 13rem;
+  cursor: pointer;
+  margin: var(--space-xxl) auto;
+}
+
+.card__side {
+  height: 20rem;
+  width: 13rem;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--br-lrg);
+  box-shadow: var(--bs-primary);
+}
+
+.card__side--front {
+  border: 1px solid var(--color-grey-med);
+  transform: rotateY(0deg);
+  -webkit-transform:rotateY(0deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-image: linear-gradient(to right bottom, var(--color-grey-light), var(--color-white-brand), var(--color-grey-light));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card:hover .card__side--front,
+.card:focus .card__side--front {
+  transform: rotateY(-180deg);
+}
+
+.card__side--back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: linear-gradient(to right bottom, var(--color-blue-brand), var(--color-white-brand), var(--color-white-brand), var(--color-red-brand));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid var(--color-grey-dark);
+}
+
+.card:hover .card__side--back,
+.card:focus .card__side--back {
+  transform: rotateY(0deg);
+}
+
+.front-stat {
+  height: 13.5%;
+}
+
+.front-stat h4,
+.front-stat p,
+.back-stat h4,
+.back-stat p {
+  margin: 0;
+  text-align: center;
+}
+
+.front-stat h4,
+.back-stat h4{
+  margin-bottom: 5px;
+}
+
+.front-logo {
+  width: 13rem;
+  margin: 0 auto;
+}
+
+.front-logo img {
+  display: block;
+  max-width: 100%;
+}
+
+.card h4 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 64em) {
+
+  .card {
+    height: 15rem;
+    width: 10rem;
+  }
+  
+  .card__side {
+    height: 15rem;
+    width: 10rem;
+  }
+
+  .front-stat h4,
+  .back-stat h4 {
+  margin-bottom: 0;
+}
+
+  .front-logo {
+    width: 10rem;
+    margin: 0 auto;
+  }
+}

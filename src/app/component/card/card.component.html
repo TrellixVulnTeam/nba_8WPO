@@ -1,0 +1,32 @@
+<!-- Card -->
+<!-- Componentize out with own http request because were making 2 requests anyways 1 for team 1 for players -->
+<div class="card" tabindex="0">
+  <div class="card__side card__side--front">
+    <div class="front-stat">
+      <h4>City</h4>
+      <p>{{ !team ? "Loading..." : team.city }}</p>
+    </div>  
+    <div class="front-stat">
+      <h4>Team Name</h4>
+      <p>{{ !team ? "Loading..." : team.name }}</p>
+    </div>
+    <div class="front-logo">
+      <img src="{{ !team ? '' : team.logoUrl }}" alt="Team logo">
+    </div>  
+  </div>
+  
+  <div class="card__side card__side--back">
+    <div class="back-stat">
+      <h4>Conference</h4>
+      <p>{{ !team ? "Loading..." : team.conference }}</p>
+    </div>  
+    <div class="back-stat">
+      <h4>Division</h4>
+      <p>{{ !team ? "Loading..." : team.division }}</p>
+    </div>  
+    <div class="back-stat">
+      <h4>Abbr.</h4>
+      <p>{{ !team ? "Loading..." : team.abbreviation }}</p>
+    </div>  
+  </div>
+</div>
